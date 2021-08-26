@@ -19,7 +19,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.3.5"
-
   },
   "eslintConfig": {
     "extends": [
@@ -181,10 +180,12 @@
     }
   },
   "devDependencies": {
-    "@parcel/transformer-image": "^2.0.0-rc.0"
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "gh-pages": "^3.2.3"
   },
   "scripts": {
-    "start": "parcel ./index.html"
+    "start": "parcel ./index.html",
+    "deploy": "gh-pages -d ./"
   },
   "repository": {
     "type": "git",
@@ -196,5 +197,5 @@
   "bugs": {
     "url": "https://github.com/Kitaokan/kitaokan.github.io/issues"
   },
-  "homepage": "https://github.com/Kitaokan/kitaokan.github.io#readme"
+  "homepage": "https://github.com/Kitaokan/kitaokan.github.io"
 }
