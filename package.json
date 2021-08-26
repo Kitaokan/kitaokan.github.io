@@ -1,0 +1,26 @@
+{
+  "name": "kitaokan.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "parcel": "^2.0.0-rc.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "start": "parcel ./index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kitaokan/kitaokan.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kitaokan/kitaokan.github.io/issues"
+  },
+  "homepage": "https://github.com/Kitaokan/kitaokan.github.io#readme"
+}
