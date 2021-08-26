@@ -2,7 +2,6 @@ import * as React from "react";
 import * as ReactDom from "react-dom";
 import * as top from "./top.png";
 import { css } from "@emotion/css";
-import { isTypeOperatorNode } from "typescript";
 
 const App = (): React.ReactElement => {
   return (
@@ -51,4 +50,4 @@ const Card = (props: { text: string }): React.ReactElement => {
 const entryElement = document.createElement("div");
 document.body.append(entryElement);
 
-ReactDom.render(<App count={2} />, entryElement);
+ReactDom.render(<App />, entryElement);
