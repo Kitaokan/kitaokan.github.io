@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDom from "react-dom";
-// import * as top from "./top.png";
 import { css } from "@emotion/css";
 
 const App = (): React.ReactElement => {
@@ -32,16 +31,6 @@ const Card = (props: { text: string }): React.ReactElement => {
         height: 128,
       })}
     >
-      {/* <img
-        className={css({
-          width: 256,
-          height: 100,
-          objectFit: "contain",
-          display: "block",
-        })}
-        src={top}
-        alt="かまうさぎ"
-      /> */}
       {props.text}
     </div>
   );
