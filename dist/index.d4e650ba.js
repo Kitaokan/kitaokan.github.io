@@ -941,7 +941,6 @@ $parcel$ReactRefreshHelpers$a70f.prelude(module);
 try {
 var _jsxRuntime = require("react/jsx-runtime");
 var _reactDom = require("react-dom");
-var _topPng = require("./top.png");
 var _css = require("@emotion/css");
 const App = ()=>{
     return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
@@ -952,17 +951,17 @@ const App = ()=>{
         }),
         __source: {
             fileName: "main.tsx",
-            lineNumber: 9
+            lineNumber: 7
         },
         __self: undefined,
         children: Array.from({
-            length: 20
+            length: 10
         }, (_, i)=>i
         ).map((item)=>/*#__PURE__*/ _jsxRuntime.jsx(Card, {
                 text: "記事" + item.toString(),
                 __source: {
                     fileName: "main.tsx",
-                    lineNumber: 17
+                    lineNumber: 15
                 },
                 __self: undefined
             }, item)
@@ -971,7 +970,7 @@ const App = ()=>{
 };
 _c = App;
 const Card = (props)=>{
-    return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
+    return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         className: _css.css({
             backgroundColor: "red",
             padding: 8,
@@ -983,37 +982,19 @@ const Card = (props)=>{
         }),
         __source: {
             fileName: "main.tsx",
-            lineNumber: 25
+            lineNumber: 23
         },
         __self: undefined,
-        children: [
-            /*#__PURE__*/ _jsxRuntime.jsx("img", {
-                className: _css.css({
-                    width: 256,
-                    height: 100,
-                    objectFit: "contain",
-                    display: "block"
-                }),
-                src: _topPng,
-                alt: "かまうさぎ",
-                __source: {
-                    fileName: "main.tsx",
-                    lineNumber: 36
-                },
-                __self: undefined
-            }),
-            props.text
-        ]
+        children: props.text
     }));
 };
 _c1 = Card;
 const entryElement = document.createElement("div");
 document.body.append(entryElement);
 _reactDom.render(/*#__PURE__*/ _jsxRuntime.jsx(App, {
-    count: 2,
     __source: {
         fileName: "main.tsx",
-        lineNumber: 54
+        lineNumber: 42
     },
     __self: undefined
 }), entryElement);
@@ -1026,7 +1007,7 @@ $RefreshReg$(_c1, "Card");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react-dom":"gkWJK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","@emotion/css":"gGYVo","./top.png":"dQF7Y"}],"8xIwr":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react-dom":"gkWJK","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5V79J","@emotion/css":"gGYVo"}],"8xIwr":[function(require,module,exports) {
 'use strict';
 module.exports = require('./cjs/react-jsx-runtime.development.js');
 
@@ -24390,44 +24371,6 @@ var classnames = function classnames1(args) {
 };
 exports.default = createEmotion;
 
-},{"@emotion/cache":"7LQaX","@emotion/serialize":"dxONe","@emotion/utils":"981Zc","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dQF7Y":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('feV6l') + "top.3f6a0be2.png";
-
-},{"./helpers/bundle-url":"8YnfL"}],"8YnfL":[function(require,module,exports) {
-"use strict";
-var bundleURL = {
-};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return '/';
-}
-function getBaseURL(url) {
-    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
-    if (!matches) throw new Error('Origin not found');
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}]},["2rAXy","6BJoD","5AMmt"], "5AMmt", "parcelRequiree10c")
+},{"@emotion/cache":"7LQaX","@emotion/serialize":"dxONe","@emotion/utils":"981Zc","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["2rAXy","6BJoD","5AMmt"], "5AMmt", "parcelRequiree10c")
 
 //# sourceMappingURL=index.d4e650ba.js.map

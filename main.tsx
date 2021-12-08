@@ -11,7 +11,7 @@ const App = (): React.ReactElement => {
         gridTemplateColumns: "1fr 1fr 1fr",
       })}
     >
-      {Array.from({ length: 20 }, (_, i) => i).map((item) => (
+      {Array.from({ length: 10 }, (_, i) => i).map((item) => (
         <Card key={item} text={"記事" + item.toString()} />
       ))}
     </div>

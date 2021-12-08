@@ -185,7 +185,8 @@
   },
   "scripts": {
     "start": "parcel ./index.html",
-    "deploy": "gh-pages -d ./"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -197,5 +198,5 @@
   "bugs": {
     "url": "https://github.com/Kitaokan/kitaokan.github.io/issues"
   },
-  "homepage": "https://github.com/Kitaokan/kitaokan.github.io"
+  "homepage": "https://Kitaokan/kitaokan.github.io"
 }
