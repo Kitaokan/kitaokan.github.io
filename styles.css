@@ -19,4 +19,5 @@ body {
 	display: none;
 	z-index: 9999;
 	width: 280px;
+    font-family: 'Noto Serif JP', serif;
 }
