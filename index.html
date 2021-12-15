@@ -6,8 +6,25 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
   <script src="./firefly.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
   <title>Kitaoka's Home page</title>
+  <script>
+    $(function() {
+      setTimeout(function(){
+        $('.start p').fadeIn(1600);
+      },500); //0.5秒後にロゴをフェードイン
+      setTimeout(function(){
+        $('.start').fadeOut(500);
+      },2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト
+    });
+  </script>
 </head>
 <body>
+  <div class="start">
+    <p><img src="./top.png" alt=""></p>
+  </div>
 </body>
 </html>
