@@ -14,8 +14,8 @@ function setup() {
     r[i] = random(1, 200);
     x[i] = random(r[i], width - r[i]);
     y[i] = random(r[i], height - r[i]);
-    dx[i] = random(-5, 6);
-    dy[i] = random(-5, 6);
+    dx[i] = random(-1, 2);
+    dy[i] = random(-1, 2);
   }
 }
 function draw() {
