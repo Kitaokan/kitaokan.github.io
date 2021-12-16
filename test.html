@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>サンプル</title>
+</head>
+<body>
+
+<p>サンプルページです。</p>
+
+<input type="button" value="button1" id="mybtn1">
+
+<script>
+let button1 = document.getElementById('mybtn1');
+button1.addEventListener('click', () => {
+	let option = 'width=300,height=300,left=200,top=200'
+    let newwin = open('test.html','mywindow', option);
+});
+</script>
+
+</body>
+</html>

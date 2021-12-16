@@ -9,6 +9,9 @@ var noiseValX = [];
 var noiseValY = [];
 var noiseValL = [];
 
+let playMode = 'sustain';
+let sample;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   rectMode(RADIUS);
@@ -24,6 +27,8 @@ function setup() {
     noiseValY[i] = Math.random()*100;
     noiseValL[i] = Math.random()*2;
   }
+
+  sample = loadSound('./kin.mp3');
 }
 function draw() {
   background(0);
@@ -48,6 +53,10 @@ function draw() {
     fill(65, 100, 100, al);
     // fill(65, 100, B, al);
     // fill(65, 100,  B, 1);
+
+    if (al = 1){
+        sample.play();
+    }
     
     noiseValX[i] += 0.02;
     noiseValY[i] += 0.02;

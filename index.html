@@ -26,5 +26,14 @@
       },2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト
     });
   </script>
+
+  <script>
+    var windowObjectReference;
+    var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+    function openRequestedPopup() {
+      windowObjectReference = window.open("http://www.cnn.com/", "CNN_WindowName", windowFeatures);
+    }
+  </script>
 </body>
 </html>
