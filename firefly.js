@@ -29,7 +29,7 @@ function setup() {
   }
 
 //   soundFormats('mp3', 'ogg');
-  sample = loadSound('./kin.mp3');
+  sample = loadSound('https://pocket-se.info/se/kin.mp3');
 }
 function draw() {
   background(0);
