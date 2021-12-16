@@ -28,6 +28,7 @@ function setup() {
     noiseValL[i] = Math.random()*2;
   }
 
+//   soundFormats('mp3', 'ogg');
   sample = loadSound('./kin.mp3');
 }
 function draw() {
