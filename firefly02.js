@@ -14,8 +14,6 @@ let noiseSpeed = [];
 let sample;
 let wave = [];
 
-
-
 function preload(){
   soundFormats('mp3', 'ogg');
   drop00 = loadSound('assets/drop_00.mp3')
