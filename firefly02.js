@@ -22,7 +22,6 @@ function preload(){
   drop03 = loadSound('assets/drop_03.mp3')
   drop04 = loadSound('assets/drop_04.mp3')
   drop05 = loadSound('assets/drop_05.mp3')
-  drone = loadSound('assets/drone.mp3')
 }
 
 function setup() {
@@ -31,7 +30,12 @@ function setup() {
   colorMode(HSB);
   background(240,100,10);
   frameRate(50);
-  sample.playMode('sustain');
+  drop00.playMode('sustain');
+  drop01.playMode('sustain');
+  drop02.playMode('sustain');
+  drop03.playMode('sustain');
+  drop04.playMode('sustain');
+  drop05.playMode('sustain');
   for (let i = 0; i < ct; i++) {
     r[i] = random(15, 40);
     x[i] = random(r[i], width - r[i]);
