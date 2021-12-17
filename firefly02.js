@@ -18,7 +18,6 @@ let wave = [];
 
 function preload(){
   soundFormats('mp3', 'ogg');
-  sample = loadSound('assets/kin.mp3');
   tanbo = loadSound('assets/tanbo.mp3')
   drop00 = loadSound('assets/drop_00.mp3')
   drop01 = loadSound('assets/drop_01.mp3')
@@ -26,7 +25,6 @@ function preload(){
   drop03 = loadSound('assets/drop_03.mp3')
   drop04 = loadSound('assets/drop_04.mp3')
   drop05 = loadSound('assets/drop_05.mp3')
-  kinzoku = loadSound('assets/kinzoku.mp3')
   drone = loadSound('assets/drone.mp3')
 }
 
