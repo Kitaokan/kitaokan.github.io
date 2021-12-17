@@ -1,4 +1,4 @@
-const ct = 15;
+let ct = 10;
 const r = [];
 const x = [];
 const y = [];
@@ -126,3 +126,21 @@ function draw() {
     noiseValL[i] += wave[i]; // 0.008
   }
 }
+
+function mouseClicked() {
+    ct ++;
+    r[ct] = random(15, 40);
+    x[ct] = mouseX;
+    y[ct] = mouseY;
+    dx[ct] = random(-1, 1);
+    dy[ct] = random(-1, 1);
+    noiseValX[ct] = Math.random()*100;
+    noiseValY[ct] = Math.random()*100;
+    noiseValL[ct] = Math.random()*2;
+    soundState[ct] = 'False';
+    wave[ct] = 1;
+    ellipse(mouseX, mouseY, r[ct] * noise(noiseValL[ct]) + 15);
+    fill(65, 100, 100);
+    // prevent default
+    return false;
+  }
