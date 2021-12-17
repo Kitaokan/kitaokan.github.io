@@ -62,20 +62,14 @@ function draw() {
     x[i] = x[i] + noise(noiseValX[i])*8-3.7 + (mouseX - x[i])/500;
     y[i] = y[i] + noise(noiseValY[i])*8-3.7 + (mouseY - y[i])/500;
     
-    // if (y[i] > height - r[i] || y[i] < r[i]) dy[i] = -dy[i];
-    // if (x[i] > width - r[i] || x[i] < r[i]) dx[i] = -dx[i];
-    
     if (x[i] > width) { x[i] = width; }
     if (x[i] < 0) { x[i] = 0; }
     if (y[i] > height) { y[i] = height; }
     if (y[i] < 0) { y[i] = 0; }
     
-    // fill(250, 255, 0, noise(noiseValX[i])*150 - 40);
     let B = noise(noiseValL[i])*160 - 40;
     let al = B / 100;
     fill(65, 100, 100, al);
-    // fill(65, 100, B, al);
-    // fill(65, 100,  B, 1);
     
     if (soundState[i] == 'False'){
       if (al < 0.2){
