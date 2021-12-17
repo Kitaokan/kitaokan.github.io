@@ -125,21 +125,22 @@ function draw() {
     noiseValY[i] += 0.02;
     noiseValL[i] += wave[i]; // 0.008
   }
+  ellipse(mouseX, mouseY, 40);
 }
 
 function mouseClicked() {
     ct ++;
-    r[ct] = random(15, 40);
-    x[ct] = mouseX;
-    y[ct] = mouseY;
-    dx[ct] = random(-1, 1);
-    dy[ct] = random(-1, 1);
-    noiseValX[ct] = Math.random()*100;
-    noiseValY[ct] = Math.random()*100;
-    noiseValL[ct] = Math.random()*2;
-    soundState[ct] = 'False';
-    wave[ct] = 1;
-    ellipse(mouseX, mouseY, r[ct] * noise(noiseValL[ct]) + 15);
+    r[ct-1] = random(15, 40);
+    x[ct-1] = mouseX;
+    y[ct-1] = mouseY;
+    dx[ct-1] = random(-1, 1);
+    dy[ct-1] = random(-1, 1);
+    noiseValX[ct-1] = Math.random()*100;
+    noiseValY[ct-1] = Math.random()*100;
+    noiseValL[ct-1] = Math.random()*2;
+    soundState[ct-1] = 'False';
+    wave[ct-1] = 1;
+    ellipse(mouseX, mouseY, r[ct-1] * noise(noiseValL[ct-1]) + 15);
     fill(65, 100, 100);
     // prevent default
     return false;
