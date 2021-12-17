@@ -17,16 +17,18 @@
 </head>
 <body>
   <div class="start">
-    <p style=" color: white;">_ホタル.js</p>
+    <p style=" color: white;">ホタル.js</p>
+    <p style=" color: white; font-size: 9pt; left: 50%; top: 60%;">このサイトはサウンドを用います。</p>
+    <p style=" color: white; font-size: 9pt; left: 50%; top: 65%;">画面をクリックしてスタート</p>
   </div>
   <script>
     $(function() {
       setTimeout(function(){
         $('.start p').fadeIn(1600);
       },500); //0.5秒後にロゴをフェードイン
-      setTimeout(function(){
-        $('.start').fadeOut(500);
-      },2500); //2.5秒後にロゴ含め真っ白背景をフェードアウト
+      $(".start").click(function () {
+        $(this).fadeOut(2000);
+      });
     });
   </script>
 
