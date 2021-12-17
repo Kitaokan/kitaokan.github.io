@@ -18,7 +18,6 @@ let wave = [];
 
 function preload(){
   soundFormats('mp3', 'ogg');
-  tanbo = loadSound('assets/tanbo.mp3')
   drop00 = loadSound('assets/drop_00.mp3')
   drop01 = loadSound('assets/drop_01.mp3')
   drop02 = loadSound('assets/drop_02.mp3')
