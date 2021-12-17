@@ -16,12 +16,12 @@ let wave = [];
 
 function preload(){
   soundFormats('mp3', 'ogg');
-  drop00 = loadSound('assets/drop_00.mp3')
-  drop01 = loadSound('assets/drop_01.mp3')
-  drop02 = loadSound('assets/drop_02.mp3')
-  drop03 = loadSound('assets/drop_03.mp3')
-  drop04 = loadSound('assets/drop_04.mp3')
-  drop05 = loadSound('assets/drop_05.mp3')
+  drop00 = loadSound('assets/drop_00.mp3');
+  drop01 = loadSound('assets/drop_01.mp3');
+  drop02 = loadSound('assets/drop_02.mp3');
+  drop03 = loadSound('assets/drop_03.mp3');
+  drop04 = loadSound('assets/drop_04.mp3');
+  drop05 = loadSound('assets/drop_05.mp3');
 }
 
 function setup() {
@@ -108,7 +108,7 @@ function draw() {
           case 4:
             drop04.amp(random(0.5));
             drop04.play();
-            delay.process(kinzoku, 0.1, .5, 2000);
+            delay.process(drop04, 0.1, .5, 2000);
             wave[i] = 5;
             break;
           case 5:
