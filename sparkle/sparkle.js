@@ -15,10 +15,6 @@ function setup() {
     loadSound("assets/takibi03.mp3"),
     loadSound("assets/takibi04.mp3"),
   ];
-
-  //スクロール不可に
-  window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
-  window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 }
 
 function draw() {

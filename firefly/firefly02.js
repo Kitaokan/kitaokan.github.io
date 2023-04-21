@@ -53,10 +53,6 @@ function setup() {
     
     // drone.loop();
   }
-
-  //スクロール不可に
-  window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
-  window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
 }
 function draw() {
   background(240,100,10);
