@@ -129,7 +129,15 @@ function draw() {
 }
 
 function mouseClicked() {
-    ct ++;
+  createFirefly();
+}
+
+function touchStarted(){
+  createFirefly();
+}
+
+function createFirefly(){
+  ct ++;
     r[ct-1] = random(15, 40);
     x[ct-1] = mouseX;
     y[ct-1] = mouseY;
@@ -144,4 +152,4 @@ function mouseClicked() {
     fill(65, 100, 100);
     // prevent default
     return false;
-  }
+}
