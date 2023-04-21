@@ -15,22 +15,6 @@ function setup() {
     loadSound("assets/takibi03.mp3"),
     loadSound("assets/takibi04.mp3"),
   ];
-
-  //スクロール不可にする
-  window.addEventListener(
-    "touchstart",
-    function (event) {
-      event.preventDefault();
-    },
-    { passive: false }
-  );
-  window.addEventListener(
-    "touchmove",
-    function (event) {
-      event.preventDefault();
-    },
-    { passive: false }
-  );
 }
 
 function draw() {
@@ -66,18 +50,37 @@ function draw() {
   }
 }
 
-function mouseClicked() {
-  orangeSphereVisible = true;
-  orangeSphere.pos = rope.endPos.copy();
-  orangeSphere.alpha = 255;
-  orangeSphere.falling = false;
-  clearTimeout(orangeSphereTimer);
-  orangeSphereTimer = setTimeout(() => {
-    orangeSphere.falling = true;
-  }, random(15000, 60000));
+// function mouseClicked() {
+//   orangeSphereVisible = true;
+//   orangeSphere.pos = rope.endPos.copy();
+//   orangeSphere.alpha = 255;
+//   orangeSphere.falling = false;
+//   clearTimeout(orangeSphereTimer);
+//   orangeSphereTimer = setTimeout(() => {
+//     orangeSphere.falling = true;
+//   }, random(15000, 60000));
   
-  // rope.endPos = createVector(mouseX, mouseY);
-}
+//   // rope.endPos = createVector(mouseX, mouseY);
+// }
+
+function mousePressed() {
+    createOrangeSphere();
+  }
+  
+  function touchStarted() {
+    createOrangeSphere();
+  }
+  
+  function createOrangeSphere() {
+    orangeSphereVisible = true;
+    orangeSphere.pos = rope.endPos.copy();
+    orangeSphere.alpha = 255;
+    orangeSphere.falling = false;
+    clearTimeout(orangeSphereTimer);
+    orangeSphereTimer = setTimeout(() => {
+      orangeSphere.falling = true;
+    }, random(15000, 60000));
+  }
 
 class OrangeSphere {
   constructor() {
