@@ -67,8 +67,11 @@ class OrangeSphere {
   constructor() {
     this.pos = createVector(width / 2, height / 2);
     this.alpha = 255;
-    this.radius = 30;
+    this.radius = 22;
     this.falling = false;
+    this.twinkle = 0;
+    this.twinkleSpeed = 2;
+    this.twinkleDirection = 1;
   }
 
   update() {
@@ -80,12 +83,23 @@ class OrangeSphere {
         orangeSphereVisible = false;
       }
     }
+    
+    // 煌めきの更新
+    this.twinkle += random(0, this.twinkleSpeed) * this.twinkleDirection;
+    if (this.twinkle >= 50 || this.twinkle <= 0) {
+      this.twinkleDirection *= -1;
+    }
   }
 
   show() {
-    fill(255, 100, 0, this.alpha);
+    // fill(255, 100, 0, this.alpha);
+    // noStroke();
+    // ellipse(this.pos.x, this.pos.y, this.radius);
+    
+    // 煌めきを表示に反映
+    fill(255, 100 + this.twinkle, 0, this.alpha);
     noStroke();
-    ellipse(this.pos.x, this.pos.y, this.radius);
+    ellipse(this.pos.x, this.pos.y, this.radius + this.twinkle/26);
   }
 }
 
@@ -155,9 +169,9 @@ class BranchParticle extends Particle {
 class Rope {
   constructor() {
     this.startPos = createVector(width / 2, 0);
-    this.endPos = createVector(width / 2 + random(-width/50,width/50), height / 1.6);
+    this.endPos = createVector(width / 2 + random(-width/10,width/10), height / 1.78);
     this.controlPos = createVector(width / 2, height / 4);
-    this.alpha = 180;
+    this.alpha = 90;
   }
 
   show() {
