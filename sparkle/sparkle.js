@@ -1,5 +1,5 @@
 const particles = [];
-const maxParticles = 20; // パーティクルの最大数を設定
+const maxParticles = 60; // パーティクルの最大数を設定
 let orangeSphere;
 let orangeSphereVisible = false;
 let orangeSphereTimer;
@@ -37,12 +37,14 @@ function draw() {
       if (particles.length < maxParticles) {
         // パーティクル数が最大数を超えないようにする
         particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
+        // print(1);
       }
     }
   }
   // パーティクルの数がmaxParticlesを超えた場合、最も古いパーティクルを削除
   if (particles.length > maxParticles) {
     particles.shift();
+    // print(0);
   }
 }
 
@@ -76,11 +78,11 @@ function updateOrangeSphere() {
     selectedSound.play();
   }
 
-  if (!orangeSphere.falling) {
-    for (let i = 0; i < 2; i++) {
-      particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
-    }
-  }
+  // if (!orangeSphere.falling) {
+  //   for (let i = 0; i < 2; i++) {
+  //     particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
+  //   }
+  // }
 }
 
 function drawParticles() {
