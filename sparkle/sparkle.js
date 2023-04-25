@@ -1,8 +1,11 @@
 const particles = [];
+const maxParticles = 20; // パーティクルの最大数を設定
 let orangeSphere;
 let orangeSphereVisible = false;
 let orangeSphereTimer;
 let rope;
+const randomValues = Array.from({ length: 100 }, () => Math.random()); // 事前に計算されたランダム値の配列を作成
+let randomIndex = 0;
 
 function preload() {
   sparkSounds = [
@@ -29,6 +32,15 @@ function draw() {
     updateOrangeSphere();
     orangeSphere.show();
     drawParticles();
+  }
+
+  if (!orangeSphere.falling) {
+    for (let i = 0; i < 2; i++) {
+      if (particles.length < maxParticles) {
+        // パーティクル数が最大数を超えないようにする
+        particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
+      }
+    }
   }
 }
 
@@ -91,7 +103,7 @@ class OrangeSphere {
     this.falling = false;
     this.twinkle = 0;
     this.twinkleSpeed = 2;
-    this.twinkleDirection = 1;
+    this.twinkleDirection = random(-2,5);
     this.swayTime = random(3500, 5500);
   }
 
@@ -110,7 +122,7 @@ class OrangeSphere {
       this.pos.y += cos(frameCount * 0.75) * 1.2;
       // print(this.pos.x);
     }
-    
+
     if (this.falling) {
       this.pos.y += 8;
       this.alpha -= 6.5;
@@ -118,7 +130,6 @@ class OrangeSphere {
         this.alpha = 0;
         orangeSphereVisible = false;
       }
-      
     }
 
     // 煌めきの更新
@@ -148,7 +159,7 @@ class Particle {
     this.alpha = 255;
     this.radius = random(4, 10);
     this.life = random(40, 100);
-    this.color = color(random(200, 255), random(100, 150), 0);
+    this.color = color(random(200, 225), random(140, 150), 60);
     this.branchParticles = [];
   }
 
@@ -202,7 +213,7 @@ class BranchParticle extends Particle {
   constructor(x, y, parentColor) {
     super(x, y);
     this.vel = p5.Vector.random2D().mult(random(1, 6)); // Increase the range of velocities for longer spread in the x-direction
-    this.color = color(255, 0, 0); // Set a different color for BranchParticles, e.g., red
+    this.color = color(random(200,255), 0, 50); // Set a different color for BranchParticles, e.g., red
     this.radius = random(2, 6);
     this.life = random(20, 50);
   }
@@ -216,14 +227,14 @@ class Rope {
       height / 1.78
     );
     this.controlPos = createVector(width / 2, height / 4);
-    this.alpha = 90;
+    this.alpha = 255;
   }
 
   show() {
     strokeWeight(3);
     noFill();
 
-    const segments = 100;
+    const segments = 10;
     const segmentLength = (this.endPos.y - this.startPos.y) / segments;
 
     for (let i = 0; i < segments; i++) {
@@ -260,21 +271,21 @@ class Rope {
       );
 
       const col1 = lerpColor(
-        color(0, 255, 0, this.alpha),
+        color(110, 255, 110, this.alpha),
         color(128, 128, 128, this.alpha),
         t1
       );
       const col2 = lerpColor(
-        color(0, 255, 0, this.alpha),
+        color(110, 255, 110, this.alpha),
         color(128, 128, 128, this.alpha),
         t2
       );
       const col = lerpColor(
         col1,
-        color(255, 255, 0, this.alpha),
+        color(255, 255, 110, this.alpha),
         abs(sin(t1 * PI))
       );
-
+      
       stroke(col);
       line(x1, y1, x2, y2);
     }
