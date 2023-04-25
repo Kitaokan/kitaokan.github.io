@@ -5,6 +5,7 @@ let orangeSphereTimer;
 let rope;
 
 function setup() {
+  canvas;
   createCanvas(windowWidth, windowHeight);
   background(0);
   orangeSphere = new OrangeSphere();
@@ -15,13 +16,15 @@ function setup() {
     loadSound("assets/takibi03.mp3"),
     loadSound("assets/takibi04.mp3"),
   ];
+
+  createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
   background(0, 50);
   const selectedSound = random(sparkSounds);
   selectedSound.setVolume(random(0, 0.5));
-  
+
   rope.show();
 
   if (orangeSphereVisible) {
@@ -50,37 +53,30 @@ function draw() {
   }
 }
 
-// function mouseClicked() {
-//   orangeSphereVisible = true;
-//   orangeSphere.pos = rope.endPos.copy();
-//   orangeSphere.alpha = 255;
-//   orangeSphere.falling = false;
-//   clearTimeout(orangeSphereTimer);
-//   orangeSphereTimer = setTimeout(() => {
-//     orangeSphere.falling = true;
-//   }, random(15000, 60000));
-  
-//   // rope.endPos = createVector(mouseX, mouseY);
-// }
-
 function mousePressed() {
+  if (orangeSphereVisible == false){
     createOrangeSphere();
   }
-  
-  function touchStarted() {
+}
+
+function touchStarted() {
+  if (orangeSphereVisible == false){
     createOrangeSphere();
   }
-  
-  function createOrangeSphere() {
-    orangeSphereVisible = true;
-    orangeSphere.pos = rope.endPos.copy();
-    orangeSphere.alpha = 255;
-    orangeSphere.falling = false;
-    clearTimeout(orangeSphereTimer);
-    orangeSphereTimer = setTimeout(() => {
-      orangeSphere.falling = true;
-    }, random(15000, 60000));
-  }
+}
+
+function createOrangeSphere() {
+  orangeSphereVisible = true;
+  orangeSphere.pos = rope.endPos.copy();
+  orangeSphere.alpha = 255;
+  orangeSphere.falling = false;
+  clearTimeout(orangeSphereTimer);
+  // orangeSphereTimer = setTimeout(() => {
+  //   orangeSphere.falling = true;
+  // }, random(1500, 6000));
+  orangeSphereTimer = random(15000, 60000);
+  orangeSphere.creationTime = millis();
+}
 
 class OrangeSphere {
   constructor() {
@@ -91,18 +87,35 @@ class OrangeSphere {
     this.twinkle = 0;
     this.twinkleSpeed = 2;
     this.twinkleDirection = 1;
+    this.swayTime = random(3500, 5500);
   }
 
   update() {
+    //落下時間の管理
+    const timeElapsed = millis() - this.creationTime;
+    const timeToFall = orangeSphereTimer - timeElapsed;
+    if (timeToFall < 0) {
+      this.falling = true;
+    }
+    //落ちる前に揺れる実装
+    // print(timeToFall);
+
+    if (timeToFall < this.swayTime && timeToFall > 0) {
+      this.pos.x += sin(frameCount * 0.75) * 1.2;
+      this.pos.y += cos(frameCount * 0.75) * 1.2;
+      // print(this.pos.x);
+    }
+    
     if (this.falling) {
       this.pos.y += 8;
-      this.alpha -= 5.5;
+      this.alpha -= 6.5;
       if (this.alpha < 0) {
         this.alpha = 0;
         orangeSphereVisible = false;
       }
+      
     }
-    
+
     // 煌めきの更新
     this.twinkle += random(0, this.twinkleSpeed) * this.twinkleDirection;
     if (this.twinkle >= 50 || this.twinkle <= 0) {
@@ -114,11 +127,11 @@ class OrangeSphere {
     // fill(255, 100, 0, this.alpha);
     // noStroke();
     // ellipse(this.pos.x, this.pos.y, this.radius);
-    
+
     // 煌めきを表示に反映
     fill(255, 100 + this.twinkle, 0, this.alpha);
     noStroke();
-    ellipse(this.pos.x, this.pos.y, this.radius + this.twinkle/26);
+    ellipse(this.pos.x, this.pos.y, this.radius + this.twinkle / 26);
   }
 }
 
@@ -135,8 +148,13 @@ class Particle {
   }
 
   addBranchParticles() {
-    for (let i = 0; i < 3; i++) { // Increase the number of branch particles created
-      const branchParticle = new BranchParticle(this.pos.x, this.pos.y, this.color);
+    for (let i = 0; i < 3; i++) {
+      // Increase the number of branch particles created
+      const branchParticle = new BranchParticle(
+        this.pos.x,
+        this.pos.y,
+        this.color
+      );
       particles.push(branchParticle); // Add the branch particle directly to the particles array
     }
   }
@@ -163,7 +181,7 @@ class Particle {
   }
 
   show() {
-    if (this instanceof BranchParticle || random(0,1) < 0.05) {
+    if (this instanceof BranchParticle || random(0, 1) < 0.05) {
       noStroke();
       fill(this.color, this.alpha);
       ellipse(this.pos.x, this.pos.y, this.radius);
@@ -188,7 +206,10 @@ class BranchParticle extends Particle {
 class Rope {
   constructor() {
     this.startPos = createVector(width / 2, 0);
-    this.endPos = createVector(width / 2 + random(-width/10,width/10), height / 1.78);
+    this.endPos = createVector(
+      width / 2 + random(-width / 10, width / 10),
+      height / 1.78
+    );
     this.controlPos = createVector(width / 2, height / 4);
     this.alpha = 90;
   }
@@ -204,14 +225,50 @@ class Rope {
       const t1 = i / segments;
       const t2 = (i + 1) / segments;
 
-      const x1 = bezierPoint(this.startPos.x, this.controlPos.x, this.endPos.x, this.endPos.x, t1);
-      const y1 = bezierPoint(this.startPos.y, this.controlPos.y, this.endPos.y, this.endPos.y, t1);
-      const x2 = bezierPoint(this.startPos.x, this.controlPos.x, this.endPos.x, this.endPos.x, t2);
-      const y2 = bezierPoint(this.startPos.y, this.controlPos.y, this.endPos.y, this.endPos.y, t2);
+      const x1 = bezierPoint(
+        this.startPos.x,
+        this.controlPos.x,
+        this.endPos.x,
+        this.endPos.x,
+        t1
+      );
+      const y1 = bezierPoint(
+        this.startPos.y,
+        this.controlPos.y,
+        this.endPos.y,
+        this.endPos.y,
+        t1
+      );
+      const x2 = bezierPoint(
+        this.startPos.x,
+        this.controlPos.x,
+        this.endPos.x,
+        this.endPos.x,
+        t2
+      );
+      const y2 = bezierPoint(
+        this.startPos.y,
+        this.controlPos.y,
+        this.endPos.y,
+        this.endPos.y,
+        t2
+      );
 
-      const col1 = lerpColor(color(0, 255, 0, this.alpha), color(128, 128, 128, this.alpha), t1);
-      const col2 = lerpColor(color(0, 255, 0, this.alpha), color(128, 128, 128, this.alpha), t2);
-      const col = lerpColor(col1, color(255, 255, 0, this.alpha), abs(sin(t1 * PI)));
+      const col1 = lerpColor(
+        color(0, 255, 0, this.alpha),
+        color(128, 128, 128, this.alpha),
+        t1
+      );
+      const col2 = lerpColor(
+        color(0, 255, 0, this.alpha),
+        color(128, 128, 128, this.alpha),
+        t2
+      );
+      const col = lerpColor(
+        col1,
+        color(255, 255, 0, this.alpha),
+        abs(sin(t1 * PI))
+      );
 
       stroke(col);
       line(x1, y1, x2, y2);
