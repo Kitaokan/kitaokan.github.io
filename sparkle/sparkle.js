@@ -4,8 +4,6 @@ let orangeSphere;
 let orangeSphereVisible = false;
 let orangeSphereTimer;
 let rope;
-const randomValues = Array.from({ length: 100 }, () => Math.random()); // 事前に計算されたランダム値の配列を作成
-let randomIndex = 0;
 
 function preload() {
   sparkSounds = [
@@ -191,13 +189,13 @@ class Particle {
 
     this.life--;
 
-    if (random() < 0.005) {
+    if (random() < 0.003) {
       this.addBranchParticles();
     }
   }
 
   show() {
-    if (this instanceof BranchParticle || random(0, 1) < 0.05) {
+    if (this instanceof BranchParticle || random(0, 1) < 0.03) {
       noStroke();
       fill(this.color, this.alpha);
       ellipse(this.pos.x, this.pos.y, this.radius);
