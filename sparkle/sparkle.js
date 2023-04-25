@@ -40,6 +40,10 @@ function draw() {
       }
     }
   }
+  // パーティクルの数がmaxParticlesを超えた場合、最も古いパーティクルを削除
+  if (particles.length > maxParticles) {
+    particles.shift();
+  }
 }
 
 function mousePressed() {
@@ -91,7 +95,6 @@ function drawParticles() {
   }
 }
 
-// 以降のクラス定義は変更なし
 
 class OrangeSphere {
   constructor() {
@@ -189,13 +192,13 @@ class Particle {
 
     this.life--;
 
-    if (random() < 0.003) {
+    if (random() < 0.004) {
       this.addBranchParticles();
     }
   }
 
   show() {
-    if (this instanceof BranchParticle || random(0, 1) < 0.03) {
+    if (this instanceof BranchParticle || random(0, 1) < 0.05) {
       noStroke();
       fill(this.color, this.alpha);
       ellipse(this.pos.x, this.pos.y, this.radius);
