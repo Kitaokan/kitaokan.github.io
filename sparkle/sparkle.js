@@ -4,44 +4,72 @@ let orangeSphereVisible = false;
 let orangeSphereTimer;
 let rope;
 
-function setup() {
-  canvas;
-  createCanvas(windowWidth, windowHeight);
-  background(0);
-  orangeSphere = new OrangeSphere();
-  rope = new Rope();
+function preload() {
   sparkSounds = [
     loadSound("assets/takibi01.mp3"),
     loadSound("assets/takibi02.mp3"),
     loadSound("assets/takibi03.mp3"),
     loadSound("assets/takibi04.mp3"),
   ];
+}
 
+function setup() {
   createCanvas(windowWidth, windowHeight);
+  background(0);
+  orangeSphere = new OrangeSphere();
+  rope = new Rope();
 }
 
 function draw() {
   background(0, 50);
-  const selectedSound = random(sparkSounds);
-  selectedSound.setVolume(random(0, 0.5));
 
   rope.show();
 
   if (orangeSphereVisible) {
-    orangeSphere.update();
+    updateOrangeSphere();
     orangeSphere.show();
-    // orangeSphere.pos = rope.endPos;
+    drawParticles();
+  }
+}
 
-    if (random(0, 1) < 0.05) {
-      selectedSound.play();
-    }
-    if (!orangeSphere.falling) {
-      for (let i = 0; i < 2; i++) {
-        particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
-      }
-    }
+function mousePressed() {
+  if (!orangeSphereVisible) {
+    createOrangeSphere();
+  }
+}
+
+function touchStarted() {
+  if (!orangeSphereVisible) {
+    createOrangeSphere();
+  }
+}
+
+function createOrangeSphere() {
+  orangeSphereVisible = true;
+  orangeSphere.pos = rope.endPos.copy();
+  orangeSphere.alpha = 255;
+  orangeSphere.falling = false;
+  orangeSphere.creationTime = millis();
+  orangeSphereTimer = random(15000, 60000);
+}
+
+function updateOrangeSphere() {
+  orangeSphere.update();
+
+  if (random(0, 1) < 0.05) {
+    const selectedSound = random(sparkSounds);
+    selectedSound.setVolume(random(0, 0.5));
+    selectedSound.play();
   }
 
+  if (!orangeSphere.falling) {
+    for (let i = 0; i < 2; i++) {
+      particles.push(new Particle(orangeSphere.pos.x, orangeSphere.pos.y));
+    }
+  }
+}
+
+function drawParticles() {
   for (let i = particles.length - 1; i >= 0; i--) {
     particles[i].update();
     particles[i].show();
@@ -53,30 +81,7 @@ function draw() {
   }
 }
 
-function mousePressed() {
-  if (orangeSphereVisible == false){
-    createOrangeSphere();
-  }
-}
-
-function touchStarted() {
-  if (orangeSphereVisible == false){
-    createOrangeSphere();
-  }
-}
-
-function createOrangeSphere() {
-  orangeSphereVisible = true;
-  orangeSphere.pos = rope.endPos.copy();
-  orangeSphere.alpha = 255;
-  orangeSphere.falling = false;
-  clearTimeout(orangeSphereTimer);
-  // orangeSphereTimer = setTimeout(() => {
-  //   orangeSphere.falling = true;
-  // }, random(1500, 6000));
-  orangeSphereTimer = random(15000, 60000);
-  orangeSphere.creationTime = millis();
-}
+// 以降のクラス定義は変更なし
 
 class OrangeSphere {
   constructor() {
