@@ -1,5 +1,5 @@
 const particles = [];
-const maxParticles = 6; // パーティクルの最大数を設定
+const maxParticles = 60; // パーティクルの最大数を設定
 let orangeSphere;
 let orangeSphereVisible = false;
 let orangeSphereTimer;
@@ -23,6 +23,10 @@ function setup() {
 
 function draw() {
   background(0, 50);
+  
+//   textAlign(LEFT);
+//   text("パーティクル数：" + particles.length, 20, 10);
+  // print(particles.length);
 
   rope.show();
 
@@ -108,19 +112,25 @@ class OrangeSphere {
     this.twinkleSpeed = 2;
     this.twinkleDirection = random(-2,5);
     this.swayTime = random(3500, 5500);
+    this.timeElapsed = 0;
+    this.timeToFall = 0;
+
   }
 
   update() {
-    //落下時間の管理
-    const timeElapsed = millis() - this.creationTime;
-    const timeToFall = orangeSphereTimer - timeElapsed;
-    if (timeToFall < 0) {
+    this.timeElapsed = millis() - this.creationTime;
+    this.timeToFall = orangeSphereTimer - this.timeElapsed;
+
+    // //落下時間の管理
+    // const timeElapsed = millis() - this.creationTime;
+    // const timeToFall = orangeSphereTimer - timeElapsed;
+    if (this.timeToFall < 0) {
       this.falling = true;
     }
     //落ちる前に揺れる実装
     // print(timeToFall);
 
-    if (timeToFall < this.swayTime && timeToFall > 0) {
+    if (this.timeToFall < this.swayTime && this.timeToFall > 0) {
       this.pos.x += sin(frameCount * 0.75) * 1.2;
       this.pos.y += cos(frameCount * 0.75) * 1.2;
       // print(this.pos.x);
