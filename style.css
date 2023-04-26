@@ -1,11 +1,23 @@
 /* styles.css */
 
+
+
 body {
     margin: 0;
     font-family: 'Noto Sans JP', 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
   }
+
+  /* 日本語タイトルのすぐ下に英語版タイトルを入れる */
+    header h1::after {
+        content: "Denno Genso Kacho";
+        display: block;
+        font-size: 0.8rem;
+        letter-spacing: 0.2rem;
+        margin-top: 0.5rem;
+    }
+
   
   header {
     background-color: #ebfb5e;
