@@ -12,6 +12,16 @@ body {
     padding: 1rem 0;
     text-align: center;
   }
+
+    /* ヘッダーの上下幅を狭くする */
+    header {
+        padding: 0.3rem 0;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+        letter-spacing: 0.4rem;
+    }
   
   h1, h2 {
     margin-bottom: 1.5rem;
@@ -29,15 +39,15 @@ body {
   
   .portfolio-item {
     text-align: center;
-    position: relative; /* この行を追加 */
-    overflow: hidden; /*  この行を追加 */
+    position: relative; 
+    overflow: hidden; /
   }
   
   .portfolio-item img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 0; /* この行を変更 */
-    object-fit: cover; /* この行を追加 */
+    margin-bottom: 0; 
+    object-fit: cover; 
     transition: opacity 0.3s ease;
   }
   
@@ -48,20 +58,21 @@ body {
   }
 
   .portfolio-item:hover img {
-    opacity: 0.2; /* この行を追加 */
+    opacity: 0.2; 
   }
   
   .portfolio-item h3 {
-  position: absolute; /* この行を追加 */
-  top: 43%; /* この行を追加 */
-  left: 50%; /* この行を追加 */
-  transform: translate(-50%, -50%); /* この行を追加 */
-  opacity: 0; /* この行を追加 */
-  transition: opacity 0.3s ease; /* この行を追加 */
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  opacity: 0;
+  transition: opacity 0.3s ease; 
   color: #050505c9;
+  font-size: 1.2rem;
 
 }
 
 .portfolio-item:hover h3 {
-  opacity: 1; /* この行を追加 */
+  opacity: 1; 
 }
