@@ -1,5 +1,5 @@
 const particles = [];
-const maxParticles = 60; // パーティクルの最大数を設定
+const maxParticles = 6; // パーティクルの最大数を設定
 let orangeSphere;
 let orangeSphereVisible = false;
 let orangeSphereTimer;
@@ -23,6 +23,10 @@ function setup() {
 
 function draw() {
   background(0, 50);
+
+  textAlign(LEFT);
+  text("パーティクル数：" + particles.length, 10, 20);
+  text("version 0.1.0", 10, 40);
 
   rope.show();
 
