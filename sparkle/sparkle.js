@@ -24,10 +24,6 @@ function setup() {
 function draw() {
   background(0, 50);
 
-  textAlign(LEFT);
-  text("パーティクル数：" + particles.length, 10, 20);
-  text("version 0.1.0", 10, 40);
-
   rope.show();
 
   if (orangeSphereVisible) {
