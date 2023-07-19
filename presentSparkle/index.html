@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script>
+  
+  <script src="./presentsparkle.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <title>Kitaoka's Home page</title>
+</head>
+<body>
+  <div class="start">
+    <p style=" color: white;">線香花火が落ちるまでに。</p>
+    <p style=" color: white; font-size: medium; left: 50%; top: 60%;">このサイトはサウンドを用います。</p>
+    <p style=" color: white; font-size: medium; left: 50%; top: 65%;">画面をタップしてください</p>
+    <p style=" color: white; font-size: medium; left: 50%; top: 70%;">Voiced by CoeFont(コエフォント)</p>
+  </div>
+  <script>
+    $(function() {
+      setTimeout(function(){
+        $('.start p').fadeIn(1600);
+      },500); //0.5秒後にロゴをフェードイン
+      $(".start").click(function () {
+        $(this).fadeOut(2000);
+      });
+    });
+  </script>
+
+  <script>
+    var windowObjectReference;
+    var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+    function openRequestedPopup() {
+      windowObjectReference = window.open("http://www.cnn.com/", "CNN_WindowName", windowFeatures);
+    }
+  </script>
+</body>
+</html>
